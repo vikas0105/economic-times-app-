@@ -55,49 +55,20 @@ echo "==============================================="
 ==============================================================================================================================================================================
 
 cd /opt
-sudo wget <TOMCAT>
-sudo tar -xzf <TOMCAT>
-sudo mv <folder> tomcat10
-sudo chmod +x /opt/tomcat10/bin/*.sh
-sudo /opt/tomcat10/bin/startup.sh
-
-#!/bin/bash
-set -e
-echo "====================================="
-echo " Installing Apache Tomcat 10.1.50"
-echo "====================================="
-
-cd /opt
-
-# Clean previous installations
-sudo rm -rf /opt/tomcat10
-sudo rm -rf /opt/apache-tomcat-10.1.50
-sudo rm -f  /opt/apache-tomcat-10.1.50.tar.gz
-
-echo "[1] Downloading Tomcat 10.1.50..."
+sudo rm -rf tomcat10 apache-tomcat-10.1.50*
 sudo wget https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.50/bin/apache-tomcat-10.1.50.tar.gz
-
-echo "[2] Extracting..."
 sudo tar -xzf apache-tomcat-10.1.50.tar.gz
-
-echo "[3] Renaming folder..."
 sudo mv apache-tomcat-10.1.50 tomcat10
-
-echo "[4] Setting execute permissions..."
 sudo chmod +x /opt/tomcat10/bin/*.sh
-
-echo "[5] Starting Tomcat..."
 sudo /opt/tomcat10/bin/startup.sh
-
-echo "====================================="
-echo " Tomcat 10.1.50 Installed Successfully!"
-echo " Access: http://<server-ip>:8080"
-echo " Folder: /opt/tomcat10"
-echo "====================================="
 ==============================================================================================================================================================================
 
-sudo rm -rf /opt/tomcat10/webapps/economic-times-app*
-sudo cp target/economic-times-app.war /opt/tomcat10/webapps/
+mvn clean package
+sudo cp target/*.war /opt/tomcat10/webapps/
 sudo /opt/tomcat10/bin/shutdown.sh
 sudo /opt/tomcat10/bin/startup.sh
+
+http://3.234.244.169:8080//economic-times-app/  : To view app on ec2
+
+
 
