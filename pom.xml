@@ -10,14 +10,12 @@
     <version>1.0</version>
     <packaging>war</packaging>
 
-    <!-- Java + Encoding -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- Dependencies -->
     <dependencies>
         <!-- JSON Parser -->
         <dependency>
@@ -26,21 +24,19 @@
             <version>20240303</version>
         </dependency>
 
-        <!-- Servlet API (provided by Tomcat) -->
+        <!-- Servlet API - javax (Tomcat 8/9 compatible) -->
         <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
 
-    <!-- Build with Java 17 -->
     <build>
         <finalName>economic-times-app</finalName>
 
         <plugins>
-            <!-- Compile with Java 17 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -50,7 +46,6 @@
                 </configuration>
             </plugin>
 
-            <!-- WAR plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
